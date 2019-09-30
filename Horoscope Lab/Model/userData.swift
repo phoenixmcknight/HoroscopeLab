@@ -15,8 +15,8 @@ struct UserDataWrapper {
     private let username = "Username"
     private let sign = "sign"
     private let birthdayData = "birthday"
-   
-    
+   private let BirthdayDate = "birthdayDate"
+    private let signPicked = "signPicked"
     func setSign(horoscope:String) {
         UserDefaults.standard.set(horoscope, forKey: sign)
     }
@@ -37,6 +37,19 @@ struct UserDataWrapper {
         return UserDefaults.standard.value(forKey: birthdayData) as? String
     }
     
+    func store(date:Date) {
+        UserDefaults.standard.set(date, forKey: BirthdayDate)
+    }
+    func getBirthdayDate() -> Date? {
+    return    UserDefaults.standard.value(forKey: BirthdayDate) as? Date
+    }
+    
+    func store(signPicked:String) {
+        UserDefaults.standard.set(signPicked, forKey: signPicked)
+    }
+    func getSignPicked() -> String? {
+      return  UserDefaults.standard.value(forKey: signPicked) as? String
+    }
     func determineSign(row:Int) -> String {
         switch row {
         case 1:

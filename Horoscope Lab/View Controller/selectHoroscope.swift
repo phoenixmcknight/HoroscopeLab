@@ -21,7 +21,9 @@ class SelectHoroscopeVC: UIViewController,UIPickerViewDelegate, UIPickerViewData
         super.viewDidLoad()
         pickerOutlet.delegate = self
         pickerOutlet.dataSource = self
+       
         buttonOutlet.setTitle("Please select a horoscope", for: .normal)
+      
         buttonOutlet.isEnabled = false
     }
 
@@ -47,9 +49,12 @@ class SelectHoroscopeVC: UIViewController,UIPickerViewDelegate, UIPickerViewData
         UserDataWrapper.shared.setSign(horoscope: UserDataWrapper.shared.determineSign(row: row))
    
         if let wrap =  UserDataWrapper.shared.getSign() {
-        buttonOutlet.setTitle("Your Horoscope is \(wrap.capitalized). Click to receive information about your sign.", for: .normal)
+      let  horoscopeString = "Your Horoscope is \(wrap.capitalized). Click to receive information about your sign."
+            buttonOutlet.setTitle(horoscopeString, for: .normal)
             buttonOutlet.isEnabled = true
+           
         }
+        
     }
     
     @IBAction func selectButtonAction(_ sender: UIButton) {

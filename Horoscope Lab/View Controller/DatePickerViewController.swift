@@ -34,6 +34,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
             dateVar = UserDataWrapper.shared.getBirthdayData()!
             
         }
+        if UserDataWrapper.shared.getBirthdayDate() != nil {
+            datePickerOutlet.date = UserDataWrapper.shared.getBirthdayDate()!
+        }
+        if UserDataWrapper.shared.getBirthdayData() != nil {
+            dateLabel.text = UserDataWrapper.shared.getBirthdayData()
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -46,7 +52,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         dateLabel.text = strDate
         dateVar = strDate
         UserDataWrapper.shared.store(birthday: strDate)
-        
+        UserDataWrapper.shared.store(date: datePickerOutlet.date)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
